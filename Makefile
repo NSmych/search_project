@@ -22,7 +22,7 @@ install: venv
 
 # Run the project
 run:
-	source venv/bin/activate && python your_project_file.py && deactivate
+	source venv/bin/activate && python main.py && deactivate
 
 # Display help message with available targets
 help:

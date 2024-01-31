@@ -10,9 +10,10 @@ This educational project, Spotify Data Analyzer, is a console application design
 
 ## Usage
 1. Clone the repository to your local machine.
-2. Install required dependencies: `pip install -r requirements.txt`.
-3. Run the application: `python main.py`.
-4. Follow on-screen instructions to perform searches and filtering.
+2. Navigate to the cloned repository directory in your console.
+3. Install required dependencies: `make install`.
+4. Run the application: `make run`.
+5. Follow on-screen instructions to perform searches and filtering.
 
 ## Requirements
 - Python 3.8 or higher.
