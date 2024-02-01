@@ -1,3 +1,4 @@
+import json
 import os
 
 import requests
@@ -25,7 +26,8 @@ def search_tracks():
 
     if response.status_code == 200:
         # track_data = response.json()['tracks']['items'][0]
-        print(response.json())
+        # print(response.json())
+        print(json.dumps(response.json(), indent=4))
         # return track_data
         return track_name
     else:

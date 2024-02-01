@@ -1,4 +1,4 @@
-from src.spotify_requests import search_tracks, search_albums, search_artists, search_genres
+from spotify_requests import search_tracks, search_albums, search_artists, search_genres
 
 welcome = True
 
