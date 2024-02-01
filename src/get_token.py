@@ -81,8 +81,9 @@ def get_token():
 
     token_response_data = r.json()
     access_token_data = token_response_data.get('access_token')
+    period = token_response_data.get('expires_in')
 
-    until = datetime.now() + timedelta(hours=6)
+    until = datetime.now() + timedelta(seconds=period)
     token_expiration_time = until.isoformat()
 
     save_spotify_token(access_token_data, token_expiration_time)
