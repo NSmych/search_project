@@ -9,6 +9,7 @@ load_dotenv()
 client_id = os.getenv("SPOTIFY_CLIENT_ID")
 client_secret = os.getenv("SPOTIFY_CLIENT_SECRET", default="")
 
+
 def get_token():
     client_creds = f"{client_id}:{client_secret}"
     client_creds_encoded = base64.b64encode(client_creds.encode()).decode()
@@ -31,8 +32,8 @@ def get_token():
     access_token = token_response_data.get('access_token')
 
     if access_token:
-        with open(".env", "r") as f:
-            content = f.read()
+        with open(".env", "r") as fr:
+            content = fr.read()
             pattern = "SPOTIFY_CLIENT_TOKEN"
 
             if pattern in content:
