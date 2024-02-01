@@ -16,14 +16,14 @@ option = {
     ],
     "album": [
         "name",
-        "images/0/url",
+        "images",
         "release_date",
         "total_tracks"
     ],
     "playlist": [
         "name",
         "external_urls/spotify",
-        "images/url",
+        "images/0/url",
         "owner/display_name",
         "tracks/total"
     ]
