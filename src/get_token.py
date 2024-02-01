@@ -2,7 +2,7 @@ import os
 import requests
 import base64
 
-from check_status_code import is_good
+from check_status_code import is_status_good
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
 
@@ -19,9 +19,7 @@ def load_spotify_credentials():
 
 
 def save_spotify_token(token, token_expiration_time):
-    env_path = ".env"
-    if not os.path.exists(env_path):
-        env_path = "../.env"
+    env_path = get_env_path()
 
     with open(env_path, "r") as fr:
         content = fr.read()
@@ -37,10 +35,15 @@ def save_spotify_token(token, token_expiration_time):
             print(f"The pattern '{pattern}' has been added to {env_path}")
 
 
-def remove_spotify_token():
+def get_env_path():
     env_path = ".env"
     if not os.path.exists(env_path):
         env_path = "../.env"
+    return env_path
+
+
+def remove_spotify_token():
+    env_path = get_env_path()
 
     with open(env_path, "r") as fr:
         lines = fr.readlines()
@@ -76,7 +79,7 @@ def get_token():
     }
 
     r = requests.post(token_url, headers=token_headers, data=token_data)
-    is_good(r.status_code)
+    is_status_good(r.status_code)
 
     token_response_data = r.json()
     access_token_data = token_response_data.get('access_token')
