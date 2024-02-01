@@ -1,14 +1,15 @@
 import json
 import os
-
 import requests
 
+from check_status_code import is_good
 
-def search_tracks():
-    track_name = input("Enter the track name: ")
+
+def search_for(search_object):
+    object_name = input(f"Enter name of the {search_object}: ")
     access_token = os.getenv("SPOTIFY_CLIENT_TOKEN")
 
-    query = track_name.replace(' ', '+')
+    query = object_name.replace(' ', '+')
 
     search_url = "https://api.spotify.com/v1/search"
 
@@ -18,30 +19,17 @@ def search_tracks():
 
     params = {
         "q": query,
-        "type": "track",
+        "type": search_object,
         "limit": 10
     }
 
     response = requests.get(search_url, headers=headers, params=params)
 
-    if response.status_code == 200:
+    if is_good(response.status_code):
         # track_data = response.json()['tracks']['items'][0]
         # print(response.json())
         print(json.dumps(response.json(), indent=4))
         # return track_data
-        return track_name
+        return object_name
     else:
-        print(f"Failed to fetch data: {response.status_code}")
         return None
-
-
-def search_albums():
-    print("Searching for albums...")
-
-
-def search_artists():
-    print("Searching for artists...")
-
-
-def search_genres():
-    print("Searching for genres...")

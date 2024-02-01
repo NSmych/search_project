@@ -1,6 +1,12 @@
-from spotify_requests import search_tracks, search_albums, search_artists, search_genres
+from spotify_requests import search_for
 
 welcome = True
+options = {
+    "1": "artist",
+    "2": "track",
+    "3": "album",
+    "4": "playlist"
+}
 
 
 def cli():
@@ -8,13 +14,13 @@ def cli():
     if welcome:
         print("Welcome to the Spotify Data Analyzer!")
     print("What would you like to search for?")
-    print("1: Tracks\n2: Albums\n3: Artists\n4: Genres")
+    print(f"1: {options['1'].capitalize()}\n2: {options['2'].capitalize()}\n3: {options['3'].capitalize()}\n4: {options['4'].capitalize()}")
 
-    options = {"1": search_tracks, "2": search_albums, "3": search_artists, "4": search_genres}
     choice = input("Enter the number of your choice: ")
     try:
         if choice.isnumeric() and 0 < int(choice) <= len(options):
-            options[choice]()
+            chosen_type = options[choice]
+            search_for(chosen_type)
         else:
             raise ValueError("Invalid choice")
     except ValueError as e:

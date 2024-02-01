@@ -1,8 +1,9 @@
 import os
 import requests
 import base64
-from datetime import datetime, timedelta
 
+from check_status_code import is_good
+from datetime import datetime, timedelta
 from dotenv import load_dotenv
 
 
@@ -75,9 +76,7 @@ def get_token():
     }
 
     r = requests.post(token_url, headers=token_headers, data=token_data)
-    if r.status_code not in range(200, 299):
-        print(f"error {r.status_code}. Could not authenticate with Spotify API")
-        return None
+    is_good(r.status_code)
 
     token_response_data = r.json()
     access_token_data = token_response_data.get('access_token')
