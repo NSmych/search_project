@@ -18,14 +18,11 @@ def cli():
         f"1: {options['1'].capitalize()}\n2: {options['2'].capitalize()}\n3: {options['3'].capitalize()}\n4: {options['4'].capitalize()}")
 
     choice = input("Enter the number of your choice: ")
-    try:
-        if choice.isnumeric() and 0 < int(choice) <= len(options):
-            chosen_type = options[choice]
-            search_for(chosen_type)
-        else:
-            raise ValueError("Invalid choice")
-    except ValueError as e:
-        print(e)
+    if choice.isnumeric() and 0 < int(choice) <= len(options):
+        chosen_type = options[choice]
+        search_for(chosen_type)
+    else:
+        print("Invalid choice")
         welcome = not welcome
         cli()
 
