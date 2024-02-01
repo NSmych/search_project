@@ -14,7 +14,8 @@ def cli():
     if welcome:
         print("Welcome to the Spotify Data Analyzer!")
     print("What would you like to search for?")
-    print(f"1: {options['1'].capitalize()}\n2: {options['2'].capitalize()}\n3: {options['3'].capitalize()}\n4: {options['4'].capitalize()}")
+    print(
+        f"1: {options['1'].capitalize()}\n2: {options['2'].capitalize()}\n3: {options['3'].capitalize()}\n4: {options['4'].capitalize()}")
 
     choice = input("Enter the number of your choice: ")
     try:
@@ -27,3 +28,8 @@ def cli():
         print(e)
         welcome = not welcome
         cli()
+
+
+def inner_search(search_object):
+    result = input(f"Enter name of the {search_object}: ")
+    return result

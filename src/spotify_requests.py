@@ -1,12 +1,13 @@
-import json
 import os
 import requests
+import cli
 
 from check_status_code import is_status_good
+from data_processing import get_key_data_from
 
 
 def search_for(search_object):
-    object_name = input(f"Enter name of the {search_object}: ")
+    object_name = cli.inner_search(search_object)
     access_token = os.getenv("SPOTIFY_CLIENT_TOKEN")
 
     query = object_name.replace(' ', '+')
@@ -26,17 +27,4 @@ def search_for(search_object):
     response = requests.get(search_url, headers=headers, params=params)
 
     if is_status_good(response.status_code):
-        print(json.dumps(response.json(), indent=4))  # If we want to observe the whole json
-        return object_name
-    else:
-        return None
-
-    # if is_good(response.status_code):
-    #     # THIS IS FOR DATA GENERATING
-    #     with open(f"../jsons/{search_object}.json", "w+") as fw:
-    #         fw.write(f"{params['q']}\n\n")
-    #         fw.write(json.dumps(response.json(), indent=4))
-    #
-    #     # track_data = response.json()['tracks']['items'][0]
-    #     # print(track_data)
-    #     # return track_data
+        get_key_data_from(response.json(), search_object)

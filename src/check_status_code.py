@@ -17,7 +17,7 @@ http_status_codes = {
 
 def is_status_good(code):
     if code in range(200, 299):
-        print(f"{code}: {http_status_codes[code]}")
+        print("\n")
         return True
     else:
         print(f"error {code}: {http_status_codes[code]}")
