@@ -96,4 +96,5 @@ def get_token():
 access_token, token_expiry = load_spotify_credentials()[2], load_spotify_credentials()[3]
 
 if not access_token or (token_expiry and datetime.now() >= datetime.fromisoformat(token_expiry)):
+    remove_spotify_token()
     access_token = get_token()
