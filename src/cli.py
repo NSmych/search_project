@@ -1,3 +1,6 @@
+import requests
+import os
+
 welcome = True
 
 
@@ -6,9 +9,9 @@ def cli():
     if welcome:
         print("Welcome to the Spotify Data Analyzer!")
     print("What would you like to search for?")
-    print("1: Songs\n2: Albums\n3: Artists\n4: Genres")
+    print("1: Tracks\n2: Albums\n3: Artists\n4: Genres")
 
-    options = {"1": search_songs, "2": search_albums, "3": search_artists, "4": search_genres}
+    options = {"1": search_tracks, "2": search_albums, "3": search_artists, "4": search_genres}
     choice = input("Enter the number of your choice: ")
     try:
         if choice.isnumeric() and 0 < int(choice) <= len(options):
@@ -21,8 +24,35 @@ def cli():
         cli()
 
 
-def search_songs():
-    print("Searching for songs...")
+def search_tracks():
+    track_name = input("Enter the track name: ")
+    access_token = os.getenv("SPOTIFY_CLIENT_TOKEN")
+
+    query = track_name.replace(' ', '+')
+
+    search_url = "https://api.spotify.com/v1/search"
+
+    headers = {
+        "Authorization": f"Bearer {access_token}"
+    }
+
+    params = {
+        "q": query,
+        "type": "track",
+        "limit": 10
+    }
+
+    response = requests.get(search_url, headers=headers, params=params)
+
+    if response.status_code == 200:
+        # Successful API call
+        track_data = response.json()['tracks']['items'][0]
+        print(track_data)
+        return track_data
+    else:
+        # API call failed
+        print(f"Failed to fetch data: {response.status_code}")
+        return None
 
 
 def search_albums():

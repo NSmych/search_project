@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 client_id = os.getenv("SPOTIFY_CLIENT_ID")
-client_secret = os.getenv("SPOTIFY_CLIENT_SECRET", default="")
+client_secret = os.getenv("SPOTIFY_CLIENT_SECRET")
 
 
 def get_token():
@@ -31,8 +31,12 @@ def get_token():
     token_response_data = r.json()
     access_token = token_response_data.get('access_token')
 
+    env_path = ".env"
+    if not os.path.exists(env_path):
+        env_path = "../.env"
+
     if access_token:
-        with open(".env", "r") as fr:
+        with open(env_path, "r") as fr:
             content = fr.read()
             pattern = "SPOTIFY_CLIENT_TOKEN"
 

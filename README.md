@@ -1,10 +1,10 @@
 # Spotify Data Analyzer (*CFG Project*)
 
 ## Overview
-This educational project, Spotify Data Analyzer, is a console application designed to interact with Spotify's API. It allows users to search and analyze data related to songs, albums, and artists.
+This educational project, Spotify Data Analyzer, is a console application designed to interact with Spotify's API. It allows users to search and analyze data related to tracks, albums, and artists.
 
 ## Features
-- Search for songs, albums, and artists.
+- Search for tracks, albums, and artists.
 - Filter results by genre, release date, and popularity.
 - Sort search results based on different criteria.
 
