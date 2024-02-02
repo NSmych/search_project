@@ -11,9 +11,10 @@ This educational project, Spotify Data Analyzer, is a console application design
 ## Usage
 1. Clone the repository to your local machine.
 2. Navigate to the cloned repository directory in your console.
-3. Install required dependencies: `make install`. (modules will be inside virtual environment)
-4. Run the application: `make run`.
-5. Follow on-screen instructions to perform searches.
+3. To set up environment variables run `make init` and provide your Spotify client ID and secret.
+4. Install required dependencies: `make install`. (modules will be inside virtual environment)
+5. Run the application: `make run`.
+6. Follow on-screen instructions to perform searches.
 
 ## Requirements
 - Python 3.8 or higher.
