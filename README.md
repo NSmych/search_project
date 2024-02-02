@@ -11,18 +11,22 @@ This educational project, Spotify Data Analyzer, is a console application design
 ## Usage
 1. Clone the repository to your local machine.
 2. Navigate to the cloned repository directory in your console.
-3. Install required dependencies: `make install`.
-4. Run the application: `make run`.
-5. Follow on-screen instructions to perform searches and filtering.
+3. To set up environment variables run `make init` and provide your Spotify client ID and secret.
+4. Install required dependencies: `make install`. (modules will be inside virtual environment)
+5. Run the application: `make run`.
+6. Follow on-screen instructions to perform searches.
 
 ## Requirements
 - Python 3.8 or higher.
 - Access to Spotify API (API key needed).
 
 ## Development Team
-- [BunZar](https://github.com/BunZar): Spotify API Integration.
-- [NSmych](https://github.com/NSmych): Search Logic and Data Filtering.
-- [cirulis](https://github.com/cirulis): User Interface Development.
+- [NSmych](https://github.com/NSmych):
+  - Spotify API Integration.
+  - Search Logic and Data Filtering.
+  - User Interface Development.
+- [BunZar](https://github.com/BunZar): New project
+- [cirulis](https://github.com/cirulis): New project
 
 ## Note
 This is an educational project developed as part of a learning exercise.

@@ -16,6 +16,14 @@ endif
 # Set the default target to 'help'
 .DEFAULT_GOAL := help
 
+# Add environment variables to local .env file
+init:
+	@touch .env2
+	@read -p "Please, provide your SPOTIFY_CLIENT_ID: " SPOTIFY_CLIENT_ID; \
+	echo "SPOTIFY_CLIENT_ID=$$SPOTIFY_CLIENT_ID" >> .env2
+	@read -s -p "Please, provide your SPOTIFY_CLIENT_SECRET: " SPOTIFY_CLIENT_SECRET; \
+	echo "SPOTIFY_CLIENT_SECRET=$$SPOTIFY_CLIENT_SECRET" >> .env2
+
 # Create a virtual environment and install dependencies from requirements.txt
 install: venv
 	source venv/bin/activate && $(PIP) install -r requirements.txt && deactivate
