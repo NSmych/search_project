@@ -5,7 +5,7 @@ This guide outlines the roles, responsibilities, and recommendations for each te
 
 ## Team Roles
 
-### [BunZar](https://github.com/BunZar): Spotify API Integration
+### [NSmych](https://github.com/NSmych): Spotify API Integration
 - **Responsibilities**: Handle all interactions with the Spotify API. Ensure that the team can fetch data about tracks, albums, and artists.
 - **Recommendations**: Familiarize yourself with the Spotify API documentation. Focus on authentication and data retrieval methods.
 
@@ -13,7 +13,7 @@ This guide outlines the roles, responsibilities, and recommendations for each te
 - **Responsibilities**: Develop the logic for searching and filtering the data obtained from the API.
 - **Recommendations**: Understand the data structure provided by the API. Implement efficient search and filter algorithms.
 
-### [cirulis](https://github.com/cirulis): User Interface Development
+### [NSmych](https://github.com/NSmych): User Interface Development
 - **Responsibilities**: Develop the console-based user interface. Ensure that users can easily input data and view results.
 - **Recommendations**: Prioritize simplicity and usability in the interface design. Test the interface thoroughly for user experience.
 
