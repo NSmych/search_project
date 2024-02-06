@@ -16,6 +16,14 @@ endif
 # Set the default target to 'help'
 .DEFAULT_GOAL := help
 
+# Add environment variables to local .env file
+init:
+	@touch .env
+	@read -p "Please, provide your SPOTIFY_CLIENT_ID: " SPOTIFY_CLIENT_ID; \
+	echo "SPOTIFY_CLIENT_ID=$$SPOTIFY_CLIENT_ID" > .env
+	@read -s -p "Please, provide your SPOTIFY_CLIENT_SECRET: " SPOTIFY_CLIENT_SECRET; \
+	echo "SPOTIFY_CLIENT_SECRET=$$SPOTIFY_CLIENT_SECRET" >> .env
+
 # Create a virtual environment and install dependencies from requirements.txt
 install: venv
 	source venv/bin/activate && $(PIP) install -r requirements.txt && deactivate
@@ -29,6 +37,7 @@ help:
 	@echo "Usage: make [target]"
 	@echo ""
 	@echo "Targets:"
+	@echo "  init     Generate env file for you."
 	@echo "  install  Create a virtual environment and install dependencies from requirements.txt."
 	@echo "  run      Run the project."
 	@echo "  help     Show this help message."

@@ -1,7 +1,7 @@
 from spotify_requests import search_for
 
-welcome = True
-options = {
+WELCOME = True
+OPTIONS = {
     "1": "artist",
     "2": "track",
     "3": "album",
@@ -10,21 +10,22 @@ options = {
 
 
 def cli():
-    global welcome
-    if welcome:
-        print("Welcome to the Spotify Data Analyzer!")
-    print("What would you like to search for?")
-    print(
-        f"1: {options['1'].capitalize()}\n2: {options['2'].capitalize()}\n3: {options['3'].capitalize()}\n4: {options['4'].capitalize()}")
+    global WELCOME
+    while True:
+        if WELCOME:
+            print("Welcome to the Spotify Data Analyzer!")
+            WELCOME = False
 
-    choice = input("Enter the number of your choice: ")
-    if choice.isnumeric() and 0 < int(choice) <= len(options):
-        chosen_type = options[choice]
-        search_for(chosen_type)
-    else:
-        print("Invalid choice")
-        welcome = not welcome
-        cli()
+        print("What would you like to search for?")
+        print(f"1: {OPTIONS['1'].capitalize()}\n2: {OPTIONS['2'].capitalize()}\n3: {OPTIONS['3'].capitalize()}\n4: {OPTIONS['4'].capitalize()}\n")
+
+        choice = input("Enter the number of your choice: ")
+        if choice.isnumeric() and 0 < int(choice) <= len(OPTIONS):
+            chosen_type = OPTIONS[choice]
+            search_for(chosen_type)
+            break
+        else:
+            print("Invalid choice\n")
 
 
 def inner_search(search_object):
