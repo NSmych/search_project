@@ -25,8 +25,6 @@ This educational project, Spotify Data Analyzer, is a console application design
   - Spotify API Integration.
   - Search Logic and Data Filtering.
   - User Interface Development.
-- [BunZar](https://github.com/BunZar): New project
-- [cirulis](https://github.com/cirulis): New project
 
 ## Note
 This is an educational project developed as part of a learning exercise.
