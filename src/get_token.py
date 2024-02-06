@@ -2,7 +2,6 @@ import os
 import requests
 import base64
 
-from check_status_code import is_status_good
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
 
@@ -79,17 +78,19 @@ def get_token():
     }
 
     r = requests.post(token_url, headers=token_headers, data=token_data)
-    is_status_good(r.status_code)
+    if r.ok:
+        token_response_data = r.json()
+        access_token_data = token_response_data.get("access_token")
+        period = token_response_data.get("expires_in")
 
-    token_response_data = r.json()
-    access_token_data = token_response_data.get('access_token')
-    period = token_response_data.get('expires_in')
+        until = datetime.now() + timedelta(seconds=period)
+        token_expiration_time = until.isoformat()
 
-    until = datetime.now() + timedelta(seconds=period)
-    token_expiration_time = until.isoformat()
-
-    save_spotify_token(access_token_data, token_expiration_time)
-
+        save_spotify_token(access_token_data, token_expiration_time)
+        print("Generated user's token")
+    else:
+        access_token_data = "Can't generate user's token"
+        print("Can't generate user's token")
     return access_token_data
 
 

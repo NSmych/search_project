@@ -37,6 +37,7 @@ help:
 	@echo "Usage: make [target]"
 	@echo ""
 	@echo "Targets:"
+	@echo "  init     Generate env file for you."
 	@echo "  install  Create a virtual environment and install dependencies from requirements.txt."
 	@echo "  run      Run the project."
 	@echo "  help     Show this help message."

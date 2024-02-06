@@ -4,7 +4,6 @@ from cli import cli
 
 def main_function():
     get_token()
-    print("This is the main function and it had run.")
     cli()
 
 
